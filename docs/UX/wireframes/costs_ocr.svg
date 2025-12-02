@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="900" viewBox="0 0 1280 900">
+  <rect x="0" y="0" width="1280" height="900" fill="#f6f7fb"/>
+  <rect x="0" y="0" width="1280" height="64" fill="#ffffff" stroke="#d9dce3"/>
+  <text x="24" y="40" font-family="-apple-system,system-ui,Segoe UI" font-size="20" fill="#111">Koszt</text>
+
+  <rect x="24" y="92" width="1232" height="704" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="122" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Upload i OCR</text>
+  <rect x="40" y="136" width="1188" height="1" fill="#e3e6ee"/>
+  <rect x="56" y="154" width="300" height="140" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="86" y="214" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Przeciągnij plik / Zrób zdjęcie</text>
+
+  <text x="56" y="330" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#666">Wyniki OCR</text>
+  <rect x="56" y="344" width="1188" height="1" fill="#e3e6ee"/>
+  <text x="72" y="380" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">NIP</text>
+  <rect x="72" y="392" width="260" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="82" y="418" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">▢▢▢▢▢▢▢▢▢▢</text>
+  <text x="352" y="380" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Kwota</text>
+  <rect x="352" y="392" width="160" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="362" y="418" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">123,45</text>
+  <text x="532" y="380" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">VAT</text>
+  <rect x="532" y="392" width="140" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="542" y="418" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">23% ▾</text>
+  <text x="692" y="380" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Data</text>
+  <rect x="692" y="392" width="180" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="702" y="418" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">2025-12-01</text>
+
+  <text x="72" y="468" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Kategoria (plan kont)</text>
+  <rect x="72" y="480" width="300" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="82" y="506" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">Koszty biurowe ▾</text>
+  <a href="../prototype/vat.html">
+    <rect x="392" y="480" width="220" height="40" rx="8" fill="#10b981"/>
+    <text x="412" y="506" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Wyślij do akceptacji</text>
+  </a>
+  <rect x="632" y="480" width="180" height="40" rx="8" fill="#4f46e5"/>
+  <text x="652" y="506" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Zapisz szkic</text>
+
+  <text x="72" y="560" font-family="-apple-system,system-ui,Segoe UI" font-size="13" fill="#ef4444">Nieprawidłowy NIP</text>
+</svg>

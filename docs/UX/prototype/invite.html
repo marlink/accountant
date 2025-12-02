@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Współpracownik</title>
+<style>
+body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
+nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
+.frame{width:100%;height:720px;border:0}
+</style>
+<body>
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="invoicing.html">Faktura</a>
+  <a href="invoice.html">Szczegóły FV</a>
+  <a href="costs.html">Koszt/OCR</a>
+  <a href="bank.html">Bank/AIS</a>
+  <a href="vat.html">VAT/JPK</a>
+  <a href="invite.html">Współpracownik</a>
+  <a href="notifications.html">Powiadomienia</a>
+  <a href="reports.html">Raporty</a>
+  <a href="settings.html">Ustawienia</a>
+  <a href="errors.html">Błędy</a>
+</nav>
+<div style="padding:12px;display:flex;gap:8px;align-items:end">
+  <input id="email" type="email" placeholder="user@example.com" style="flex:1;padding:8px;border:1px solid #ddd;border-radius:6px">
+  <select id="rola" style="padding:8px;border:1px solid #ddd;border-radius:6px">
+    <option>Owner</option>
+    <option>Accountant</option>
+    <option>Office Manager</option>
+  </select>
+  <button id="invite" style="padding:8px 12px;border:0;border-radius:8px;background:#10b981;color:#fff">Zaproś</button>
+</div>
+<div id="status" style="padding:8px 12px;color:#111"></div>
+<div style="padding:8px 16px"><label><input id="small" type="checkbox"> Mały ekran (390px)</label></div>
+<div id="wrap">
+  <object class="frame" type="image/svg+xml" data="../wireframes/roles_invite.svg"></object>
+</div>
+<script>
+document.getElementById('invite').onclick=()=>{
+  const e=document.getElementById('email').value.trim();
+  const r=document.getElementById('rola').value;
+  const s=document.getElementById('status');
+  if(!/.+@.+\..+/.test(e)){s.textContent='Błąd: nieprawidłowy e‑mail';s.style.color='#b91c1c';return}
+  s.style.color='#065f46';
+  s.textContent='Zaproszono '+e+' jako '+r;
+};
+// small screen toggle
+(function(){
+  const small=document.getElementById('small');
+  const wrap=document.getElementById('wrap');
+  const frame=document.querySelector('.frame');
+  const orig=frame.style.height||'720px';
+  function apply(){
+    if(small && small.checked){wrap.style.maxWidth='390px';frame.style.height='600px';}
+    else{wrap.style.maxWidth='none';frame.style.height=orig;}
+  }
+  if(small){small.onchange=apply;apply();}
+})();
+</script>
+</body>
+</html>

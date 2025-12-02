@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframes — Auto Descriptions</title>
+<style>
+body{margin:0;font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial;color:#111}
+header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:#111;color:#fff}
+header a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
+.container{padding:16px;display:grid;gap:24px}
+.section{border:1px solid #e5e7eb;border-radius:10px;background:#fff}
+.section h2{margin:0;padding:12px 16px;border-bottom:1px solid #e5e7eb}
+.row{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;padding:12px}
+.frame{width:100%;height:800px;border:0;background:#f6f7fb}
+.desc{border:1px dashed #e5e7eb;border-radius:8px;padding:12px;overflow:auto;max-height:800px}
+.desc h3{margin:8px 0}
+.desc ul{margin:0 0 8px 0;padding-left:18px}
+.desc li{margin:4px 0}
+.controls{margin-left:auto;display:flex;gap:8px}
+.btn{padding:8px 12px;border:0;border-radius:8px;background:#4f46e5;color:#fff}
+.btn.sec{background:#6b7280}
+</style>
+<body>
+<header>
+  <strong>Wireframes — Auto Descriptions</strong>
+  <a href="prototype/index.html">Open Clickable Prototype</a>
+  <div class="controls">
+    <button id="refresh" class="btn">Odśwież opisy</button>
+    <button id="toggle" class="btn sec">Przełącz: Grupowane/Surowe</button>
+  </div>
+</header>
+<div id="app" class="container"></div>
+<script>
+const screens=[
+  {name:'Dashboard', file:'wireframes/dashboard.svg', height:800},
+  {name:'Faktura', file:'wireframes/invoicing_form.svg', height:900},
+  {name:'Szczegóły FV', file:'wireframes/invoice_detail.svg', height:800},
+  {name:'Koszt/OCR', file:'wireframes/costs_ocr.svg', height:900},
+  {name:'Bank/AIS', file:'wireframes/bank_reconciliation.svg', height:900},
+  {name:'VAT/JPK', file:'wireframes/vat_jpk.svg', height:850},
+  {name:'Współpracownik', file:'wireframes/roles_invite.svg', height:700},
+  {name:'Powiadomienia', file:'wireframes/notifications.svg', height:700}
+];
+const app=document.getElementById('app');
+function mount(){
+  app.innerHTML='';
+  for(const s of screens){
+    const sec=document.createElement('section');sec.className='section';
+    const h=document.createElement('h2');h.textContent=s.name;sec.appendChild(h);
+    const row=document.createElement('div');row.className='row';sec.appendChild(row);
+    const obj=document.createElement('object');obj.className='frame';obj.type='image/svg+xml';obj.data=s.file;obj.style.height=s.height+'px';
+    const desc=document.createElement('div');desc.className='desc';
+    desc.innerHTML='<strong>Opis (auto)</strong><div class="content"></div>';
+    const content=desc.querySelector('.content');
+    obj.addEventListener('load',()=>{
+      try{
+        const doc=obj.contentDocument; if(!doc) return;
+        const nodes=[...doc.querySelectorAll('text')]
+          .map(t=>({
+            text:(t.textContent||'').trim(),
+            x:parseFloat(t.getAttribute('x')||'0'),
+            y:parseFloat(t.getAttribute('y')||'0'),
+            size:parseFloat(t.getAttribute('font-size')||'14')
+          }))
+          .filter(n=>n.text && n.text.length>1);
+        const uniq=[];const seen=new Set();
+        for(const n of nodes){const key=n.text.toLowerCase();if(!seen.has(key)){seen.add(key);uniq.push(n);}}
+        uniq.sort((a,b)=>a.y===b.y? a.x-b.x : a.y-b.y);
+        const actionRx=/(wystaw|dodaj|połącz|wyślij|zapisz|zaproś|waliduj|eksport|zamknij|dopasuj|zobacz)/i;
+        const fieldRx=/(nip|numeracja|data|waluta|vat|adres|nazwa|kwota|kategoria|ilość|cena|pozycje|mpp)/i;
+        const statusRx=/(przyjęto|wysłano|odrzucono|opłacone|id ksef|ok|partial|bank sync|status|powiadomienia)/i;
+        const groups={Header:[],Title:[],Cards:[],Fields:[],Actions:[],Status:[],Validation:[],Other:[]};
+        for(const n of uniq){
+          let cat='Other';
+          if(n.y<=90){cat='Header'}
+          else if(n.size>=20 && n.y<=160){cat='Title'}
+          else if(actionRx.test(n.text)){cat='Actions'}
+          else if(fieldRx.test(n.text)){cat='Fields'}
+          else if(statusRx.test(n.text)){cat='Status'}
+          else if(n.y>140 && n.y<=360){cat='Cards'}
+          else if(/błąd|walidacja|schema|nieprawidłowy/i.test(n.text)){cat='Validation'}
+          groups[cat].push(n);
+        }
+        content.innerHTML='';
+        const grouped=window.__wireframes_grouped!==false;
+        if(grouped){
+          const order=['Header','Title','Cards','Fields','Actions','Status','Validation','Other'];
+          for(const k of order){
+            if(!groups[k].length) continue;
+            const h=document.createElement('h3');h.textContent=k;content.appendChild(h);
+            const ul=document.createElement('ul');content.appendChild(ul);
+            for(const n of groups[k]){const li=document.createElement('li');li.textContent=n.text;ul.appendChild(li);}            
+          }
+        }else{
+          const ul=document.createElement('ul');content.appendChild(ul);
+          for(const n of uniq){const li=document.createElement('li');li.textContent=n.text;ul.appendChild(li);}        
+        }
+      }catch(e){
+        const ul=document.createElement('ul');content.appendChild(ul);
+        const li=document.createElement('li');li.textContent='Błąd generowania opisu';ul.appendChild(li);
+      }
+    });
+    row.appendChild(obj);row.appendChild(desc);app.appendChild(sec);
+  }
+}
+document.getElementById('refresh').onclick=mount;
+document.getElementById('toggle').onclick=()=>{window.__wireframes_grouped=window.__wireframes_grouped===false?true:false;mount();};
+mount();
+</script>
+</body>
+</html>

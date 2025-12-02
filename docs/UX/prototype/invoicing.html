@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Faktura</title>
+<style>
+body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
+nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
+.frame{width:100%;height:920px;border:0}
+</style>
+<body>
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="invoicing.html">Faktura</a>
+  <a href="invoice.html">Szczegóły FV</a>
+  <a href="costs.html">Koszt/OCR</a>
+  <a href="bank.html">Bank/AIS</a>
+  <a href="vat.html">VAT/JPK</a>
+  <a href="invite.html">Współpracownik</a>
+  <a href="notifications.html">Powiadomienia</a>
+  <a href="reports.html">Raporty</a>
+  <a href="settings.html">Ustawienia</a>
+  <a href="errors.html">Błędy</a>
+</nav>
+<div style="padding:12px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:end">
+  <div>
+    <label>NIP</label>
+    <input id="nip" type="text" maxlength="10" placeholder="XXXXXXXXXX" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+  </div>
+  <div>
+    <label>Numeracja</label>
+    <input id="numer" type="text" value="FV/2025/000123" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+  </div>
+  <div>
+    <label>MPP</label>
+    <input id="mpp" type="checkbox" style="transform:scale(1.2)">
+  </div>
+  <div>
+    <label>Cena netto</label>
+    <input id="netto" type="number" step="0.01" value="100" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+  </div>
+  <div>
+    <label>VAT</label>
+    <select id="vat" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+      <option value="23">23%</option>
+      <option value="8">8%</option>
+      <option value="5">5%</option>
+      <option value="0">0%</option>
+      <option value="zw">zw</option>
+    </select>
+  </div>
+  <button id="ksef" style="padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff">Wyślij do KSeF</button>
+</div>
+<div id="status" style="padding:8px 12px;color:#111"></div>
+<div style="padding:8px 16px"><label><input id="small" type="checkbox"> Mały ekran (390px)</label></div>
+<div id="wrap">
+  <object class="frame" type="image/svg+xml" data="../wireframes/invoicing_form.svg"></object>
+</div>
+<script>
+const s=document.getElementById('status');
+const btn=document.getElementById('ksef');
+btn.onclick=()=>{
+  const nip=document.getElementById('nip').value.trim();
+  const numer=document.getElementById('numer').value.trim();
+  const vat=document.getElementById('vat').value;
+  const netto=parseFloat(document.getElementById('netto').value||'0');
+  const valid=/^\d{10}$/.test(nip);
+  if(!valid){s.textContent='Odrzucono: Nieprawidłowy NIP';s.style.color='#b91c1c';return}
+  const vatAmt=vat==='zw'?0:vat==='0'?0:netto*(parseFloat(vat)/100);
+  const brutto=(netto+vatAmt).toFixed(2);
+  const id='KSeF-'+Math.random().toString(36).slice(2,8).toUpperCase();
+  s.style.color='#065f46';
+  s.textContent='Przyjęto • '+numer+' • Brutto '+brutto+' • Id '+id;
+};
+// small screen toggle
+(function(){
+  const small=document.getElementById('small');
+  const wrap=document.getElementById('wrap');
+  const frame=document.querySelector('.frame');
+  const orig=frame.style.height||'920px';
+  function apply(){
+    if(small && small.checked){wrap.style.maxWidth='390px';frame.style.height='600px';}
+    else{wrap.style.maxWidth='none';frame.style.height=orig;}
+  }
+  if(small){small.onchange=apply;apply();}
+})();
+</script>
+</body>
+</html>

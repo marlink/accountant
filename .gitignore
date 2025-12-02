@@ -1,0 +1,4 @@
+# Obsidian plugin build artifacts
+.obsidian/plugins/*/node_modules/
+.obsidian/plugins/*/dist/
+.obsidian/plugins/*/build/

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="850" viewBox="0 0 1280 850">
+  <rect x="0" y="0" width="1280" height="850" fill="#f6f7fb"/>
+  <rect x="0" y="0" width="1280" height="64" fill="#ffffff" stroke="#d9dce3"/>
+  <text x="24" y="40" font-family="-apple-system,system-ui,Segoe UI" font-size="20" fill="#111">VAT / JPK_V7</text>
+
+  <rect x="24" y="92" width="1232" height="680" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="122" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Rejestry i walidacja</text>
+  <rect x="40" y="136" width="1188" height="1" fill="#e3e6ee"/>
+
+  <rect x="56" y="154" width="560" height="220" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="72" y="182" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#111">Rejestr VAT Sprzedaż</text>
+  <text x="72" y="210" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Ilość: 123 • Netto: 45 000 • VAT: 10 350</text>
+  <rect x="640" y="154" width="588" height="220" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="656" y="182" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#111">Rejestr VAT Zakup</text>
+  <text x="656" y="210" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Ilość: 98 • Netto: 21 500 • VAT: 4 945</text>
+
+  <rect x="56" y="394" width="1188" height="1" fill="#e3e6ee"/>
+  <rect x="56" y="412" width="200" height="44" rx="8" fill="#0ea5e9"/>
+  <text x="76" y="441" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Waliduj</text>
+  <a href="../prototype/index.html">
+    <rect x="276" y="412" width="220" height="44" rx="8" fill="#4f46e5"/>
+    <text x="296" y="441" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Eksport JPK_V7M/K</text>
+  </a>
+  <rect x="516" y="412" width="220" height="44" rx="8" fill="#10b981"/>
+  <text x="536" y="441" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Zamknij miesiąc</text>
+
+  <rect x="56" y="478" width="1188" height="274" rx="8" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="72" y="506" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#111">Wyniki walidacji</text>
+  <text x="72" y="536" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#ef4444">Błąd: Brak pola K_23 w dokumencie FV/2025/000118</text>
+  <text x="72" y="566" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#10b981">OK: Struktura JPK zgodna</text>
+</svg>

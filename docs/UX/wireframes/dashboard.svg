@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <rect x="0" y="0" width="1280" height="800" fill="#f6f7fb"/>
+  <rect x="0" y="0" width="1280" height="64" fill="#ffffff" stroke="#d9dce3"/>
+  <text x="24" y="40" font-family="-apple-system,system-ui,Segoe UI" font-size="20" fill="#111">Logo</text>
+  <text x="1100" y="40" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#444">Użytkownik ▾</text>
+
+  <text x="24" y="108" font-family="-apple-system,system-ui,Segoe UI" font-size="22" fill="#111">Dashboard</text>
+
+  <rect x="24" y="132" width="290" height="140" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="160" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#555">KSeF Statusy</text>
+  <text x="40" y="190" font-family="-apple-system,system-ui,Segoe UI" font-size="28" fill="#111">Przyjęto: 12</text>
+  <text x="40" y="220" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#777">Wysłano: 2 • Odrzucono: 1</text>
+
+  <rect x="330" y="132" width="290" height="140" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="346" y="160" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#555">Podatki do zapłaty</text>
+  <text x="346" y="190" font-family="-apple-system,system-ui,Segoe UI" font-size="28" fill="#111">VAT: 12 345 PLN</text>
+  <text x="346" y="220" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#777">Termin: 25.12</text>
+
+  <rect x="636" y="132" width="290" height="140" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="652" y="160" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#555">Nieopłacone faktury</text>
+  <text x="652" y="190" font-family="-apple-system,system-ui,Segoe UI" font-size="28" fill="#111">4 (7 dni)</text>
+  <text x="652" y="220" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#777">Najstarsza: FV/2025/000118</text>
+
+  <rect x="942" y="132" width="314" height="140" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="958" y="160" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#555">Bank Sync</text>
+  <text x="958" y="190" font-family="-apple-system,system-ui,Segoe UI" font-size="28" fill="#111">Ostatni: 3h</text>
+  <text x="958" y="220" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#777">Połączone: PKO, mBank</text>
+
+  <rect x="24" y="292" width="1232" height="74" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <a href="../prototype/invoicing.html">
+    <rect x="40" y="308" width="200" height="42" rx="8" fill="#0ea5e9"/>
+    <text x="60" y="335" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Wystaw fakturę</text>
+  </a>
+  <a href="../prototype/costs.html">
+    <rect x="260" y="308" width="200" height="42" rx="8" fill="#10b981"/>
+    <text x="280" y="335" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Dodaj koszt</text>
+  </a>
+  <a href="../prototype/bank.html">
+    <rect x="480" y="308" width="240" height="42" rx="8" fill="#6366f1"/>
+    <text x="500" y="335" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Połącz konto bankowe</text>
+  </a>
+
+  <rect x="24" y="386" width="1232" height="360" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="416" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Powiadomienia i terminy</text>
+  <rect x="40" y="436" width="1188" height="1" fill="#e3e6ee"/>
+  <text x="60" y="470" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#555">VAT do zapłaty • 25.12 • 12 345 PLN</text>
+  <text x="60" y="500" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#555">ZUS DRA • 10.12 • 1 234 PLN</text>
+  <text x="60" y="530" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#555">Nieopłacone: FV/2025/000118 • 7 dni</text>
+</svg>

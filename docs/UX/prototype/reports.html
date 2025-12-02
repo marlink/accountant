@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Raporty</title>
+<style>
+body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
+nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
+.frame{width:100%;height:820px;border:0}
+.card{margin:12px 16px;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden}
+.card h2{margin:0;padding:10px 12px;border-bottom:1px solid #e5e7eb}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th,.tbl td{padding:10px;border-top:1px solid #f1f5f9;text-align:left}
+.tbl th{background:#f8fafc}
+</style>
+<body>
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="invoicing.html">Faktura</a>
+  <a href="invoice.html">Szczegóły FV</a>
+  <a href="costs.html">Koszt/OCR</a>
+  <a href="bank.html">Bank/AIS</a>
+  <a href="vat.html">VAT/JPK</a>
+  <a href="invite.html">Współpracownik</a>
+  <a href="notifications.html">Powiadomienia</a>
+  <a href="reports.html">Raporty</a>
+  <a href="settings.html">Ustawienia</a>
+  <a href="errors.html">Błędy</a>
+</nav>
+<div style="padding:8px 16px"><label><input id="small" type="checkbox"> Mały ekran (390px)</label></div>
+<div id="wrap">
+  <div class="card">
+    <h2>Raport sprzedaży (Q1 2025)</h2>
+    <table class="tbl">
+      <thead><tr><th>Miesiąc</th><th>Netto</th><th>VAT</th><th>Brutto</th></tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+</div>
+<script>
+const data=[
+  {m:'Styczeń',n:12500,vat:2875},{m:'Luty',n:9800,vat:2254},{m:'Marzec',n:14200,vat:3266}
+];
+const rows=document.getElementById('rows');
+for(const r of data){const tr=document.createElement('tr');const b=r.n+r.vat;tr.innerHTML=`<td>${r.m}</td><td>${r.n.toFixed(2)}</td><td>${r.vat.toFixed(2)}</td><td>${b.toFixed(2)}</td>`;rows.appendChild(tr);} 
+// small screen toggle
+(function(){
+  const small=document.getElementById('small');
+  const wrap=document.getElementById('wrap');
+  function apply(){if(small && small.checked){wrap.style.maxWidth='390px';}else{wrap.style.maxWidth='none';}}
+  if(small){small.onchange=apply;apply();}
+})();
+</script>
+</body>
+</html>

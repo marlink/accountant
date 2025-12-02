@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Błędy i złe ścieżki</title>
+<style>
+body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
+nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
+.grid{padding:16px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{border:1px solid #e5e7eb;border-radius:10px;padding:12px}
+.card h2{margin:0 0 8px 0}
+.card a{display:inline-block;margin-top:8px;color:#2563eb}
+</style>
+<body>
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="invoicing.html">Faktura</a>
+  <a href="invoice.html">Szczegóły FV</a>
+  <a href="costs.html">Koszt/OCR</a>
+  <a href="bank.html">Bank/AIS</a>
+  <a href="vat.html">VAT/JPK</a>
+  <a href="invite.html">Współpracownik</a>
+  <a href="notifications.html">Powiadomienia</a>
+  <a href="reports.html">Raporty</a>
+  <a href="settings.html">Ustawienia</a>
+  <a href="errors.html">Błędy</a>
+</nav>
+<div class="grid">
+  <div class="card"><h2>404 — Nie znaleziono</h2><p>Niedostępna podstrona lub usunięty zasób.</p><a href="404.html">Otwórz</a></div>
+  <div class="card"><h2>500 — Błąd serwera</h2><p>Ogólny błąd po stronie serwera.</p><a href="500.html">Otwórz</a></div>
+  <div class="card"><h2>401 — Brak autoryzacji</h2><p>Sesja wygasła lub użytkownik nie zalogowany.</p><a href="unauthorized.html">Otwórz</a></div>
+  <div class="card"><h2>Bank — brak połączenia</h2><p>Integracja AIS rozłączona lub odrzucona.</p><a href="bank_disconnected.html">Otwórz</a></div>
+</div>
+</body>
+</html>

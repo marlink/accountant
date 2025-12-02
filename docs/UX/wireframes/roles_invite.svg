@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700">
+  <rect x="0" y="0" width="900" height="700" fill="#f6f7fb"/>
+  <rect x="0" y="0" width="900" height="64" fill="#ffffff" stroke="#d9dce3"/>
+  <text x="24" y="40" font-family="-apple-system,system-ui,Segoe UI" font-size="20" fill="#111">Zaproś współpracownika</text>
+
+  <rect x="24" y="92" width="852" height="520" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="122" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Dane</text>
+  <rect x="40" y="136" width="818" height="1" fill="#e3e6ee"/>
+  <text x="56" y="170" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">E‑mail</text>
+  <rect x="56" y="182" width="340" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="66" y="208" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">user@example.com</text>
+
+  <text x="56" y="250" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Rola</text>
+  <rect x="56" y="262" width="240" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="66" y="288" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">Owner ▾</text>
+  <rect x="306" y="262" width="240" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="316" y="288" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">Accountant ▾</text>
+  <rect x="556" y="262" width="240" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="566" y="288" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">Office Manager ▾</text>
+
+  <a href="../prototype/index.html">
+    <rect x="56" y="332" width="180" height="44" rx="8" fill="#10b981"/>
+    <text x="76" y="360" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Zaproś</text>
+  </a>
+
+  <rect x="24" y="632" width="852" height="48" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="662" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Historia zmian: kto/kiedy/co</text>
+</svg>

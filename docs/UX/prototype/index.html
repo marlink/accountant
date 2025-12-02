@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototype — Dashboard</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<style>
+body{margin:0;font-family:-apple-system,system-ui,Segoe UI,Roboto,Arial}
+nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
+nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
+.wrap{padding:0}
+.frame{width:100%;height:820px;border:0}
+</style>
+<body>
+<nav>
+  <a href="index.html">Dashboard</a>
+  <a href="invoicing.html">Faktura</a>
+  <a href="invoice.html">Szczegóły FV</a>
+  <a href="costs.html">Koszt/OCR</a>
+  <a href="bank.html">Bank/AIS</a>
+  <a href="vat.html">VAT/JPK</a>
+  <a href="invite.html">Współpracownik</a>
+  <a href="notifications.html">Powiadomienia</a>
+  <a href="reports.html">Raporty</a>
+  <a href="settings.html">Ustawienia</a>
+  <a href="errors.html">Błędy</a>
+</nav>
+<div style="padding:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+  <button onclick="location.href='invoicing.html'" style="padding:8px 12px;border:0;border-radius:8px;background:#0ea5e9;color:#fff">Wystaw fakturę</button>
+  <button onclick="location.href='costs.html'" style="padding:8px 12px;border:0;border-radius:8px;background:#10b981;color:#fff">Dodaj koszt</button>
+  <button onclick="location.href='bank.html'" style="padding:8px 12px;border:0;border-radius:8px;background:#6366f1;color:#fff">Połącz konto bankowe</button>
+  <label style="margin-left:auto"><input id="small" type="checkbox"> Mały ekran (390px)</label>
+</div>
+<div id="wrap" class="wrap">
+  <object class="frame" type="image/svg+xml" data="../wireframes/dashboard.svg"></object>
+  
+</div>
+<script>
+(function(){
+  const small=document.getElementById('small');
+  const wrap=document.getElementById('wrap');
+  const frame=document.querySelector('.frame');
+  const orig=frame.style.height||'820px';
+  function apply(){
+    if(small && small.checked){wrap.style.maxWidth='390px';frame.style.height='600px';}
+    else{wrap.style.maxWidth='none';frame.style.height=orig;}
+  }
+  if(small){small.onchange=apply;apply();}
+})();
+</script>
+</body>
+</html>

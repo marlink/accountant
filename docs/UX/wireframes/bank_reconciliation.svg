@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="900" viewBox="0 0 1280 900">
+  <rect x="0" y="0" width="1280" height="900" fill="#f6f7fb"/>
+  <rect x="0" y="0" width="1280" height="64" fill="#ffffff" stroke="#d9dce3"/>
+  <text x="24" y="40" font-family="-apple-system,system-ui,Segoe UI" font-size="20" fill="#111">Bankowość (AIS)</text>
+
+  <rect x="24" y="92" width="1232" height="704" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="122" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Połączenie</text>
+  <rect x="40" y="136" width="1188" height="1" fill="#e3e6ee"/>
+  <rect x="56" y="154" width="220" height="42" rx="8" fill="#6366f1"/>
+  <text x="76" y="182" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Połącz konto bankowe</text>
+  <text x="300" y="180" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#6b7280">Ostatni sync: 3h</text>
+
+  <text x="40" y="230" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Transakcje</text>
+  <rect x="40" y="244" width="1188" height="1" fill="#e3e6ee"/>
+  <rect x="56" y="262" width="1156" height="44" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="72" y="290" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Data</text>
+  <text x="172" y="290" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Kwota</text>
+  <text x="272" y="290" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Kontrahent</text>
+  <text x="520" y="290" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Sugestia dopasowania</text>
+  <text x="830" y="290" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Status</text>
+
+  <rect x="56" y="314" width="1156" height="52" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="72" y="346" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">12-02</text>
+  <text x="172" y="346" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">123,00</text>
+  <text x="272" y="346" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">ABC Sp. z o.o.</text>
+  <text x="520" y="346" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">FV/2025/000123</text>
+  <rect x="830" y="326" width="100" height="28" rx="14" fill="#f59e0b"/>
+  <text x="845" y="346" font-family="-apple-system,system-ui,Segoe UI" font-size="13" fill="#fff">PARTIAL</text>
+  <a href="../prototype/invoice.html">
+    <rect x="1012" y="322" width="180" height="36" rx="8" fill="#0ea5e9"/>
+    <text x="1032" y="346" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#fff">Dopasuj</text>
+  </a>
+
+  <rect x="56" y="372" width="1156" height="52" rx="6" fill="#ffffff" stroke="#e5e7eb"/>
+  <text x="72" y="404" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">12-01</text>
+  <text x="172" y="404" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">200,00</text>
+  <text x="272" y="404" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">DEF Sp. z o.o.</text>
+  <text x="520" y="404" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#111">FV/2025/000118</text>
+  <rect x="830" y="386" width="100" height="28" rx="14" fill="#10b981"/>
+  <text x="850" y="406" font-family="-apple-system,system-ui,Segoe UI" font-size="13" fill="#fff">OK</text>
+  <rect x="1012" y="380" width="180" height="36" rx="8" fill="#e5e7eb"/>
+  <text x="1032" y="404" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#6b7280">Zobacz</text>
+
+  <rect x="56" y="492" width="320" height="40" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="72" y="518" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#4f46e5">Filtr: Nieopłacone • Tylko częściowe</text>
+</svg>

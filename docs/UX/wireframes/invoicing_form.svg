@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="900" viewBox="0 0 1280 900">
+  <rect x="0" y="0" width="1280" height="900" fill="#f6f7fb"/>
+  <rect x="0" y="0" width="1280" height="64" fill="#ffffff" stroke="#d9dce3"/>
+  <text x="24" y="40" font-family="-apple-system,system-ui,Segoe UI" font-size="20" fill="#111">Faktura VAT</text>
+
+  <rect x="24" y="92" width="1232" height="704" rx="8" fill="#ffffff" stroke="#e3e6ee"/>
+  <text x="40" y="122" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Dane kontrahenta</text>
+  <rect x="40" y="136" width="1188" height="1" fill="#e3e6ee"/>
+  <text x="56" y="170" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">NIP</text>
+  <rect x="56" y="182" width="260" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="66" y="208" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">▢▢▢▢▢▢▢▢▢▢</text>
+  <text x="336" y="170" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Nazwa</text>
+  <rect x="336" y="182" width="420" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="346" y="208" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">ABC Sp. z o.o.</text>
+  <text x="776" y="170" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Adres</text>
+  <rect x="776" y="182" width="468" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+
+  <text x="56" y="250" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Numeracja</text>
+  <rect x="56" y="262" width="260" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="66" y="288" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">FV/2025/000123</text>
+  <text x="336" y="250" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Data</text>
+  <rect x="336" y="262" width="200" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="346" y="288" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">2025-12-02</text>
+  <text x="556" y="250" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Waluta</text>
+  <rect x="556" y="262" width="140" height="40" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="566" y="288" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#999">PLN ▾</text>
+  <rect x="716" y="262" width="220" height="40" rx="20" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="736" y="288" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#4f46e5">MPP • mechanizm podzielonej płatności</text>
+
+  <text x="40" y="340" font-family="-apple-system,system-ui,Segoe UI" font-size="18" fill="#111">Pozycje</text>
+  <rect x="40" y="354" width="1188" height="1" fill="#e3e6ee"/>
+  <rect x="56" y="372" width="880" height="38" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="66" y="396" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Nazwa</text>
+  <rect x="946" y="372" width="90" height="38" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="956" y="396" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">VAT</text>
+  <rect x="1046" y="372" width="82" height="38" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="1056" y="396" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Netto</text>
+  <rect x="1140" y="372" width="88" height="38" rx="6" fill="#f9fafb" stroke="#e5e7eb"/>
+  <text x="1150" y="396" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#666">Brutto</text>
+
+  <rect x="56" y="420" width="100" height="34" rx="6" fill="#0ea5e9"/>
+  <text x="70" y="442" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#fff">+ Pozycja</text>
+
+  <rect x="40" y="532" width="1188" height="1" fill="#e3e6ee"/>
+  <a href="../prototype/invoice.html">
+    <rect x="56" y="552" width="220" height="44" rx="8" fill="#4f46e5"/>
+    <text x="76" y="580" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Wyślij do KSeF</text>
+  </a>
+  <rect x="296" y="552" width="180" height="44" rx="8" fill="#10b981"/>
+  <text x="316" y="580" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">PDF</text>
+  <a href="../prototype/index.html">
+    <rect x="496" y="552" width="200" height="44" rx="8" fill="#0ea5e9"/>
+    <text x="516" y="580" font-family="-apple-system,system-ui,Segoe UI" font-size="16" fill="#fff">Wyślij e‑mailem</text>
+  </a>
+  <text x="56" y="618" font-family="-apple-system,system-ui,Segoe UI" font-size="14" fill="#6b7280">Status: — (po wysyłce pokaż „Wysłano/Przyjęto/Odrzucono” i `Id KSeF`)</text>
+</svg>

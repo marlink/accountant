@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Dashboard</title>
+  <style>
+    body{font-family:system-ui,Arial;padding:20px}
+    .tiles{display:flex;gap:16px}
+    .tile{border:1px solid #ddd;border-radius:8px;padding:16px;min-width:220px}
+    .label{color:#666;font-size:12px}
+    .value{font-size:28px}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <div>
+    <input id="url" placeholder="SUPABASE_URL" style="width:340px" />
+    <input id="key" placeholder="SUPABASE_ANON_KEY" style="width:340px" />
+    <button id="connect">Connect</button>
+  </div>
+  <div class="tiles" style="margin-top:16px">
+    <div class="tile">
+      <div class="label">Job Success Rate</div>
+      <div class="value" id="success">–</div>
+      <div class="label" id="last">–</div>
+    </div>
+    <div class="tile">
+      <div class="label">Outstanding KSeF Queue</div>
+      <div class="value" id="outstanding">–</div>
+    </div>
+  </div>
+  <script>
+    let sb
+    document.getElementById('connect').onclick = async () => {
+      const url = document.getElementById('url').value
+      const key = document.getElementById('key').value
+      sb = window.supabase.createClient(url, key)
+      const { data: rates } = await sb.from('view_job_success_rate').select('*').eq('job','ksef-batch').limit(1)
+      const r = rates && rates[0]
+      document.getElementById('success').textContent = r ? String(r.success_rate) : '0'
+      document.getElementById('last').textContent = r ? new Date(r.last_run).toLocaleString() : ''
+      const { data: q } = await sb.from('view_ksef_outstanding_queue').select('*').limit(1)
+      document.getElementById('outstanding').textContent = q && q[0] ? String(q[0].outstanding) : '0'
+    }
+  </script>
+</body>
+</html>
