@@ -3,3 +3,6 @@
 .obsidian/plugins/*/dist/
 .obsidian/plugins/*/build/
 .obsidian/plugins/obsidian_ai_plugin/
+
+# Supabase CLI temp files
+supabase/.temp/

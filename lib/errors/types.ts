@@ -29,6 +29,7 @@ export enum ErrorCode {
   KSEF_SCHEMA_INVALID = 'KSEF_SCHEMA_INVALID',
   KSEF_SIGNATURE_INVALID = 'KSEF_SIGNATURE_INVALID',
   KSEF_SERVER_ERROR = 'KSEF_SERVER_ERROR',
+  KSEF_TIMEOUT = 'KSEF_TIMEOUT',
 
   // Authentication errors
   AUTH_ERROR = 'AUTH_ERROR',
@@ -51,6 +52,22 @@ export enum ErrorCode {
   // Generic errors
   UNKNOWN_ERROR = 'UNKNOWN_ERROR',
   INTERNAL_ERROR = 'INTERNAL_ERROR',
+  
+  // HTTP method errors
+  METHOD_NOT_ALLOWED = 'METHOD_NOT_ALLOWED',
+  
+  // Database errors
+  DATABASE_ERROR = 'DATABASE_ERROR',
+  
+  // Not found errors (alias for consistency)
+  NOT_FOUND = 'NOT_FOUND',
+  
+  // Conflict errors
+  CONFLICT = 'CONFLICT',
+  
+  // Authorization errors (alias)
+  UNAUTHORIZED = 'UNAUTHORIZED',
+  FORBIDDEN = 'FORBIDDEN',
 }
 
 export type ErrorSeverity = 'error' | 'warning' | 'info';

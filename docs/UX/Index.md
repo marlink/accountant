@@ -12,21 +12,29 @@ status: reviewed
 - [[Wireframes]]
 
 - Wireframes assets:
-  - [Bank Reconciliation](wireframes/bank_reconciliation.svg)
-  - [Costs OCR](wireframes/costs_ocr.svg)
-  - [Dashboard](wireframes/dashboard.svg)
-  - [Invoice Detail](wireframes/invoice_detail.svg)
-  - [Invoicing Form](wireframes/invoicing_form.svg)
-  - [Notifications](wireframes/notifications.svg)
-  - [Roles/Invite](wireframes/roles_invite.svg)
-  - [VAT/JPK](wireframes/vat_jpk.svg)
+  - [[UX/wireframes/bank_reconciliation.svg]]
+  - [[UX/wireframes/costs_ocr.svg]]
+  - [[UX/wireframes/dashboard.svg]]
+  - [[UX/wireframes/invoice_detail.svg]]
+  - [[UX/wireframes/invoicing_form.svg]]
+  - [[UX/wireframes/notifications.svg]]
+  - [[UX/wireframes/roles_invite.svg]]
+  - [[UX/wireframes/vat_jpk.svg]]
 - Prototype pages:
-  - [Bank/AIS](prototype/bank.html)
-  - [Costs/OCR](prototype/costs.html)
-  - [Dashboard](prototype/index.html)
-  - [Invite](prototype/invite.html)
-  - [Invoice Detail](prototype/invoice.html)
-  - [Invoicing](prototype/invoicing.html)
-  - [Notifications](prototype/notifications.html)
-  - [VAT/JPK](prototype/vat.html)
+  - [[UX/prototype/404.html]]
+  - [[UX/prototype/500.html]]
+  - [[UX/prototype/admin.html]]
+  - [[UX/prototype/bank.html]]
+  - [[UX/prototype/bank_disconnected.html]]
+  - [[UX/prototype/costs.html]]
+  - [[UX/prototype/errors.html]]
+  - [[UX/prototype/index.html]]
+  - [[UX/prototype/invite.html]]
+  - [[UX/prototype/invoice.html]]
+  - [[UX/prototype/invoicing.html]]
+  - [[UX/prototype/notifications.html]]
+  - [[UX/prototype/reports.html]]
+  - [[UX/prototype/settings.html]]
+  - [[UX/prototype/unauthorized.html]]
+  - [[UX/prototype/vat.html]]
 

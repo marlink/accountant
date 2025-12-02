@@ -1,5 +1,5 @@
 ---
-last_updated: 2025-01-XX
+last_updated: 2025-12-02
 source_path: docs/UX/Wireframes.md
 ---
 # Wireframes

@@ -222,11 +222,20 @@ export function logError(error: AppError, additionalContext?: Record<string, unk
     console.error('[Error]', logData);
   }
 
-  // In production, you would send to logging service (e.g., Sentry, LogRocket, etc.)
-  // Example:
-  // if (typeof window !== 'undefined' && window.Sentry) {
-  //   window.Sentry.captureException(error, { extra: logData });
-  // }
+  // Send to Sentry if available
+  if (process.env.SENTRY_DSN) {
+    try {
+      // Dynamic import to avoid bundling if not needed
+      const { captureException } = require('../apps/web/lib/errors/sentry');
+      if (captureException) {
+        const errorObj = new Error(error.message);
+        errorObj.name = error.code;
+        captureException(errorObj, logData);
+      }
+    } catch (e) {
+      // Sentry not available, continue without it
+    }
+  }
 }
 
 /**
