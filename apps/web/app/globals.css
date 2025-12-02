@@ -81,17 +81,26 @@
 
   * {
     @apply border-border;
-    /* Apply stylistic settings to border radius and stroke where appropriate */
-    border-radius: var(--stylistic-radius, 0.5rem);
   }
   
-  /* Apply stylistic stroke to borders */
+  /* Apply stylistic settings to interactive elements and components */
   button,
   input,
   select,
   textarea,
-  [role="button"] {
+  [role="button"],
+  .rounded,
+  [class*="rounded"] {
     border-width: var(--stylistic-stroke, 2px);
+  }
+  
+  /* Apply stylistic radius to elements that should have rounded corners */
+  button,
+  input,
+  select,
+  [role="button"],
+  .rounded {
+    border-radius: var(--stylistic-radius, 0.5rem);
   }
 
   body {

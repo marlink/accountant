@@ -200,7 +200,13 @@ export function StylisticSettingsForm() {
               type="button"
               variant={logoMode === "upload" ? "default" : "outline"}
               size="sm"
-              onClick={() => setLogoMode("upload")}
+              onClick={() => {
+                setLogoMode("upload")
+                // Clear URL when switching to upload mode
+                if (localSettings.logoUrl) {
+                  setLocalSettings({ ...localSettings, logoUrl: undefined })
+                }
+              }}
             >
               Upload
             </Button>
@@ -208,7 +214,13 @@ export function StylisticSettingsForm() {
               type="button"
               variant={logoMode === "url" ? "default" : "outline"}
               size="sm"
-              onClick={() => setLogoMode("url")}
+              onClick={() => {
+                setLogoMode("url")
+                // Clear data URL when switching to URL mode
+                if (localSettings.logoDataUrl) {
+                  setLocalSettings({ ...localSettings, logoDataUrl: undefined })
+                }
+              }}
             >
               URL
             </Button>

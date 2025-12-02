@@ -1,3 +1,14 @@
 #!/bin/sh
-node "$(dirname "$0")/../sync-obsidian.js" once
+# Resolve symlink to get actual hook file location
+if [ -L "$0" ]; then
+  HOOK_FILE="$(readlink "$0")"
+  # If relative path, resolve relative to symlink's directory
+  if [ "${HOOK_FILE#/}" = "$HOOK_FILE" ]; then
+    HOOK_FILE="$(cd "$(dirname "$0")" && cd "$(dirname "$HOOK_FILE")" && pwd)/$(basename "$HOOK_FILE")"
+  fi
+else
+  HOOK_FILE="$0"
+fi
+SCRIPT_DIR="$(cd "$(dirname "$HOOK_FILE")" && pwd)"
+node "$SCRIPT_DIR/../sync-obsidian.js" once
 exit 0
