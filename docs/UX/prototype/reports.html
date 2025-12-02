@@ -1,21 +1,24 @@
 <!doctype html>
 <html lang="pl">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prototype — Raporty</title>
+<link rel="stylesheet" href="styles.css">
 <style>
-body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
-nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
-.frame{width:100%;height:820px;border:0}
-.card{margin:12px 16px;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden}
-.card h2{margin:0;padding:10px 12px;border-bottom:1px solid #e5e7eb}
+.card{margin:var(--space-lg);border:2px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;background:var(--surface);box-shadow:var(--shadow-md)}
+.card h2{margin:0;padding:var(--space-md) var(--space-lg);border-bottom:2px solid var(--border);font-size:1.125rem;font-weight:600;color:var(--text-primary);background:var(--surface-elevated)}
 .tbl{width:100%;border-collapse:collapse}
-.tbl th,.tbl td{padding:10px;border-top:1px solid #f1f5f9;text-align:left}
-.tbl th{background:#f8fafc}
+.tbl th,.tbl td{padding:var(--space-md) var(--space-lg);border-top:1px solid var(--border);text-align:left;font-size:0.9375rem}
+.tbl th{background:var(--surface-elevated);font-weight:600;color:var(--text-primary);text-transform:uppercase;font-size:0.8125rem;letter-spacing:0.05em}
+.tbl td{color:var(--text-secondary)}
+.tbl tr:hover{background:var(--surface-elevated)}
 </style>
+</head>
 <body>
-<nav>
+<a href="#main-content" class="skip-link">Przejdź do treści głównej</a>
+<header role="banner">
+<nav role="navigation" aria-label="Główne menu nawigacyjne">
   <a href="index.html">Dashboard</a>
   <a href="invoicing.html">Faktura</a>
   <a href="invoice.html">Szczegóły FV</a>
@@ -24,32 +27,66 @@ nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;backgro
   <a href="vat.html">VAT/JPK</a>
   <a href="invite.html">Współpracownik</a>
   <a href="notifications.html">Powiadomienia</a>
-  <a href="reports.html">Raporty</a>
+  <a href="reports.html" aria-current="page">Raporty</a>
   <a href="settings.html">Ustawienia</a>
   <a href="errors.html">Błędy</a>
 </nav>
-<div style="padding:8px 16px"><label><input id="small" type="checkbox"> Mały ekran (390px)</label></div>
-<div id="wrap">
-  <div class="card">
-    <h2>Raport sprzedaży (Q1 2025)</h2>
-    <table class="tbl">
-      <thead><tr><th>Miesiąc</th><th>Netto</th><th>VAT</th><th>Brutto</th></tr></thead>
-      <tbody id="rows"></tbody>
-    </table>
-  </div>
+</header>
+<main id="main-content" role="main">
+<h1 class="sr-only">Raporty</h1>
+<div class="screen-toggle-container-alt">
+  <label class="screen-toggle">
+    <input id="small" type="checkbox" aria-label="Przełącz na mały ekran (390px)"> <span>Mały ekran (390px)</span>
+  </label>
 </div>
+<div id="wrap">
+  <section class="card" aria-labelledby="report-title">
+    <h2 id="report-title">Raport sprzedaży (Q1 2025)</h2>
+    <div role="region" aria-label="Tabela raportu sprzedaży">
+      <table class="tbl" role="table" aria-label="Raport sprzedaży Q1 2025">
+        <thead>
+          <tr>
+            <th scope="col">Miesiąc</th>
+            <th scope="col">Netto</th>
+            <th scope="col">VAT</th>
+            <th scope="col">Brutto</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+</main>
 <script>
-const data=[
-  {m:'Styczeń',n:12500,vat:2875},{m:'Luty',n:9800,vat:2254},{m:'Marzec',n:14200,vat:3266}
-];
-const rows=document.getElementById('rows');
-for(const r of data){const tr=document.createElement('tr');const b=r.n+r.vat;tr.innerHTML=`<td>${r.m}</td><td>${r.n.toFixed(2)}</td><td>${r.vat.toFixed(2)}</td><td>${b.toFixed(2)}</td>`;rows.appendChild(tr);} 
-// small screen toggle
 (function(){
-  const small=document.getElementById('small');
-  const wrap=document.getElementById('wrap');
-  function apply(){if(small && small.checked){wrap.style.maxWidth='390px';}else{wrap.style.maxWidth='none';}}
-  if(small){small.onchange=apply;apply();}
+  const data = [
+    {m:'Styczeń',n:12500,vat:2875},
+    {m:'Luty',n:9800,vat:2254},
+    {m:'Marzec',n:14200,vat:3266}
+  ];
+  const rows = document.getElementById('rows');
+  for(const r of data){
+    const tr = document.createElement('tr');
+    const b = r.n + r.vat;
+    tr.innerHTML = '<td>' + r.m + '</td><td>' + r.n.toFixed(2) + '</td><td>' + r.vat.toFixed(2) + '</td><td>' + b.toFixed(2) + '</td>';
+    rows.appendChild(tr);
+  }
+  
+  // small screen toggle
+  const small = document.getElementById('small');
+  const wrap = document.getElementById('wrap');
+  function apply(){
+    if(small && small.checked){
+      wrap.style.maxWidth = '390px';
+    } else {
+      wrap.style.maxWidth = 'none';
+    }
+  }
+  if(small){
+    small.addEventListener('change', apply);
+    apply();
+  }
 })();
 </script>
 </body>

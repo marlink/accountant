@@ -1,54 +1,83 @@
 <!doctype html>
 <html lang="pl">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prototype — VAT/JPK</title>
-<style>
-body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
-nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
-.frame{width:100%;height:900px;border:0}
-</style>
+<link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<nav>
+<a href="#main-content" class="skip-link">Przejdź do treści głównej</a>
+<header role="banner">
+<nav role="navigation" aria-label="Główne menu nawigacyjne">
   <a href="index.html">Dashboard</a>
   <a href="invoicing.html">Faktura</a>
   <a href="invoice.html">Szczegóły FV</a>
   <a href="costs.html">Koszt/OCR</a>
   <a href="bank.html">Bank/AIS</a>
-  <a href="vat.html">VAT/JPK</a>
+  <a href="vat.html" aria-current="page">VAT/JPK</a>
   <a href="invite.html">Współpracownik</a>
   <a href="notifications.html">Powiadomienia</a>
   <a href="reports.html">Raporty</a>
   <a href="settings.html">Ustawienia</a>
   <a href="errors.html">Błędy</a>
 </nav>
-<div style="padding:12px;display:flex;gap:10px;align-items:center">
-  <button id="validate" style="padding:8px 12px;border:0;border-radius:8px;background:#0ea5e9;color:#fff">Waliduj</button>
-  <button id="export" style="padding:8px 12px;border:0;border-radius:8px;background:#4f46e5;color:#fff">Eksport JPK</button>
-  <button id="close" style="padding:8px 12px;border:0;border-radius:8px;background:#10b981;color:#fff">Zamknij miesiąc</button>
+</header>
+<main id="main-content" role="main">
+<h1 class="sr-only">VAT/JPK</h1>
+<div class="action-bar">
+  <button id="validate" class="btn-primary">Waliduj</button>
+  <button id="export" class="btn-primary">Eksport JPK</button>
+  <button id="close" class="btn-secondary">Zamknij miesiąc</button>
+  <label class="screen-toggle">
+    <input id="small" type="checkbox" aria-label="Przełącz na mały ekran (390px)"> <span>Mały ekran (390px)</span>
+  </label>
 </div>
-<div id="status" style="padding:8px 12px;color:#111"></div>
-<div style="padding:8px 16px"><label><input id="small" type="checkbox"> Mały ekran (390px)</label></div>
+<div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
 <div id="wrap">
-  <object class="frame" type="image/svg+xml" data="../wireframes/vat_jpk.svg"></object>
+  <object class="frame" type="image/svg+xml" data="../wireframes/vat_jpk.svg" aria-label="VAT/JPK wireframe"></object>
 </div>
+</main>
 <script>
-const s=document.getElementById('status');
-document.getElementById('validate').onclick=()=>{s.style.color='#b91c1c';s.textContent='Błąd: Brak pola K_23 w FV/2025/000118'};
-document.getElementById('export').onclick=()=>{s.style.color='#065f46';s.textContent='Eksport JPK_V7M/K gotowy'};
-document.getElementById('close').onclick=()=>{s.style.color='#065f46';s.textContent='Miesiąc zamknięty'};
-// small screen toggle
 (function(){
-  const small=document.getElementById('small');
-  const wrap=document.getElementById('wrap');
-  const frame=document.querySelector('.frame');
-  const orig=frame.style.height||'900px';
-  function apply(){
-    if(small && small.checked){wrap.style.maxWidth='390px';frame.style.height='600px';}
-    else{wrap.style.maxWidth='none';frame.style.height=orig;}
+  const s = document.getElementById('status');
+  
+  function showStatus(message, type){
+    s.textContent = message;
+    s.className = type;
+    s.setAttribute('aria-live', 'assertive');
   }
-  if(small){small.onchange=apply;apply();}
+  
+  document.getElementById('validate').addEventListener('click', function(){
+    showStatus('Błąd: Brak pola K_23 w FV/2025/000118', 'error');
+  });
+  
+  document.getElementById('export').addEventListener('click', function(){
+    showStatus('Eksport JPK_V7M/K gotowy', 'success');
+  });
+  
+  document.getElementById('close').addEventListener('click', function(){
+    showStatus('Miesiąc zamknięty', 'success');
+  });
+  
+  // small screen toggle
+  const small = document.getElementById('small');
+  const wrap = document.getElementById('wrap');
+  const frame = document.querySelector('.frame');
+  const orig = frame.style.height || '900px';
+  function apply(){
+    if(small && small.checked){
+      wrap.style.maxWidth = '390px';
+      frame.style.height = '600px';
+    } else {
+      wrap.style.maxWidth = 'none';
+      frame.style.height = orig;
+    }
+  }
+  if(small){
+    small.addEventListener('change', apply);
+    apply();
+  }
 })();
 </script>
 </body>

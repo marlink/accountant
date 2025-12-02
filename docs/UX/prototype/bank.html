@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang="pl">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prototype — Bank/AIS</title>
-<style>
-body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
-nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
-.frame{width:100%;height:920px;border:0}
-</style>
+<link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<nav>
+<a href="#main-content" class="skip-link">Przejdź do treści głównej</a>
+<header role="banner">
+<nav role="navigation" aria-label="Główne menu nawigacyjne">
   <a href="index.html">Dashboard</a>
   <a href="invoicing.html">Faktura</a>
   <a href="invoice.html">Szczegóły FV</a>
   <a href="costs.html">Koszt/OCR</a>
-  <a href="bank.html">Bank/AIS</a>
+  <a href="bank.html" aria-current="page">Bank/AIS</a>
   <a href="vat.html">VAT/JPK</a>
   <a href="invite.html">Współpracownik</a>
   <a href="notifications.html">Powiadomienia</a>
@@ -23,35 +22,59 @@ nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;backgro
   <a href="settings.html">Ustawienia</a>
   <a href="errors.html">Błędy</a>
 </nav>
-<div style="padding:12px;display:flex;gap:16px;align-items:center;flex-wrap:wrap">
-  <label><input id="f1" type="checkbox"> Nieopłacone</label>
-  <label><input id="f2" type="checkbox"> Tylko częściowe</label>
-  <button id="apply" style="padding:8px 12px;border:0;border-radius:8px;background:#6366f1;color:#fff">Zastosuj filtry</button>
-  <label style="margin-left:auto"><input id="small" type="checkbox"> Mały ekran (390px)</label>
+</header>
+<main id="main-content" role="main">
+<h1 class="sr-only">Bank/AIS</h1>
+<div class="action-bar">
+  <label>
+    <input id="f1" type="checkbox" aria-label="Filtruj nieopłacone"> <span>Nieopłacone</span>
+  </label>
+  <label>
+    <input id="f2" type="checkbox" aria-label="Filtruj tylko częściowe"> <span>Tylko częściowe</span>
+  </label>
+  <button id="apply" class="btn-primary">Zastosuj filtry</button>
+  <label class="screen-toggle">
+    <input id="small" type="checkbox" aria-label="Przełącz na mały ekran (390px)"> <span>Mały ekran (390px)</span>
+  </label>
 </div>
-<div id="status" style="padding:8px 12px;color:#111"></div>
+<div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
 <div id="wrap">
-  <object class="frame" type="image/svg+xml" data="../wireframes/bank_reconciliation.svg"></object>
-  
+  <object class="frame" type="image/svg+xml" data="../wireframes/bank_reconciliation.svg" aria-label="Bank reconciliation wireframe"></object>
 </div>
+</main>
 <script>
-document.getElementById('apply').onclick=()=>{
-  const s=document.getElementById('status');
-  const a=document.getElementById('f1').checked;
-  const b=document.getElementById('f2').checked;
-  s.textContent='Filtry: '+(a?'Nieopłacone ':'')+(b?'Częściowe':'');
-};
-// small screen toggle
 (function(){
-  const small=document.getElementById('small');
-  const wrap=document.getElementById('wrap');
-  const frame=document.querySelector('.frame');
-  const orig=frame.style.height||'920px';
+  const applyBtn = document.getElementById('apply');
+  const s = document.getElementById('status');
+  
+  applyBtn.addEventListener('click', function(){
+    const a = document.getElementById('f1').checked;
+    const b = document.getElementById('f2').checked;
+    const filters = [];
+    if(a) filters.push('Nieopłacone');
+    if(b) filters.push('Częściowe');
+    s.textContent = 'Filtry: ' + (filters.length > 0 ? filters.join(' ') : 'brak');
+    s.className = 'success';
+  });
+  
+  // small screen toggle
+  const small = document.getElementById('small');
+  const wrap = document.getElementById('wrap');
+  const frame = document.querySelector('.frame');
+  const orig = frame.style.height || '920px';
   function apply(){
-    if(small && small.checked){wrap.style.maxWidth='390px';frame.style.height='600px';}
-    else{wrap.style.maxWidth='none';frame.style.height=orig;}
+    if(small && small.checked){
+      wrap.style.maxWidth = '390px';
+      frame.style.height = '600px';
+    } else {
+      wrap.style.maxWidth = 'none';
+      frame.style.height = orig;
+    }
   }
-  if(small){small.onchange=apply;apply();}
+  if(small){
+    small.addEventListener('change', apply);
+    apply();
+  }
 })();
 </script>
 </body>

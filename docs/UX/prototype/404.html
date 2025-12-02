@@ -1,18 +1,25 @@
 <!doctype html>
 <html lang="pl">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>404 — Nie znaleziono</title>
+<link rel="stylesheet" href="styles.css">
 <style>
-body{margin:0;font-family:-apple-system,system-ui,Segoe UI;display:flex;min-height:100vh;background:#0f172a;color:#fff}
-.wrap{margin:auto;text-align:center;padding:24px}
-.wrap a{color:#93c5fd}
+body{margin:0;font-family:var(--font-sans);display:flex;min-height:100vh;background:var(--color-p1);color:var(--text-on-primary)}
+.wrap{margin:auto;text-align:center;padding:var(--space-xl)}
+.wrap a{color:var(--color-p2);text-decoration:none;font-weight:500}
+.wrap a:hover{text-decoration:underline}
+.wrap a:focus-visible{outline:3px solid var(--color-p2);outline-offset:2px;border-radius:var(--radius-sm)}
 </style>
+</head>
 <body>
+<main role="main" id="main-content">
 <div class="wrap">
   <h1>404</h1>
   <p>Nie znaleziono żądanej strony.</p>
   <p><a href="index.html">Powrót do Dashboard</a></p>
 </div>
+</main>
 </body>
 </html>

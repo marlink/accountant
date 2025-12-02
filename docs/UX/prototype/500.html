@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>500 — Błąd serwera</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body{margin:0;font-family:var(--font-sans);display:flex;min-height:100vh;background:var(--color-p1);color:var(--text-on-primary)}
+.wrap{margin:auto;text-align:center;padding:var(--space-xl)}
+.wrap a{color:var(--color-p2);text-decoration:none;font-weight:500}
+.wrap a:hover{text-decoration:underline}
+.wrap a:focus-visible{outline:3px solid var(--color-p2);outline-offset:2px;border-radius:var(--radius-sm)}
+.code{font-size:0.875rem;background:var(--primary-light);color:var(--text-on-primary);padding:var(--space-md);border-radius:var(--radius-md);display:inline-block;margin-top:var(--space-md);font-family:var(--font-mono)}
+</style>
+</head>
+<body>
+<main role="main" id="main-content">
+<div class="wrap">
+  <h1>500</h1>
+  <p>Coś poszło nie tak. Spróbuj ponownie później.</p>
+  <div class="code" aria-label="Trace ID">TraceId: SRV-{{demo}}</div>
+  <p><a href="index.html">Powrót do Dashboard</a></p>
+</div>
+</main>
+</body>
+</html>

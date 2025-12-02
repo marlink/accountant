@@ -1,48 +1,63 @@
 <!doctype html>
-<html>
+<html lang="pl">
 <head>
-  <meta charset="utf-8" />
-  <title>Admin Dashboard</title>
-  <style>
-    body{font-family:system-ui,Arial;padding:20px}
-    .tiles{display:flex;gap:16px}
-    .tile{border:1px solid #ddd;border-radius:8px;padding:16px;min-width:220px}
-    .label{color:#666;font-size:12px}
-    .value{font-size:28px}
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body{font-family:var(--font-sans);padding:var(--space-lg);background:var(--surface-elevated)}
+.tiles{display:flex;gap:var(--space-lg);flex-wrap:wrap}
+.tile{border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-lg);min-width:220px;background:var(--surface);box-shadow:var(--shadow-sm)}
+.label{color:var(--text-secondary);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em}
+.value{font-size:1.75rem;font-weight:600;color:var(--text-primary);margin-top:var(--space-xs)}
+input{min-height:44px;padding:var(--space-sm);border:2px solid var(--border);border-radius:var(--radius-md);font-family:var(--font-sans)}
+input:focus{outline:none;border-color:var(--color-p2);box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+input:focus-visible{outline:3px solid var(--color-p2);outline-offset:2px}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
-  <h1>Admin Dashboard</h1>
-  <div>
-    <input id="url" placeholder="SUPABASE_URL" style="width:340px" />
-    <input id="key" placeholder="SUPABASE_ANON_KEY" style="width:340px" />
-    <button id="connect">Connect</button>
+<header role="banner">
+<h1>Admin Dashboard</h1>
+</header>
+<main role="main" id="main-content">
+<div>
+  <label for="url" class="sr-only">SUPABASE_URL</label>
+  <input id="url" type="text" placeholder="SUPABASE_URL" class="input-wide" aria-label="URL Supabase">
+  <label for="key" class="sr-only">SUPABASE_ANON_KEY</label>
+  <input id="key" type="text" placeholder="SUPABASE_ANON_KEY" class="input-wide" aria-label="Klucz anonimowy Supabase">
+  <button id="connect" class="btn-primary">Connect</button>
+</div>
+<div class="tiles" role="region" aria-label="Statystyki">
+  <div class="tile">
+    <div class="label">Job Success Rate</div>
+    <div class="value" id="success" aria-live="polite">–</div>
+    <div class="label" id="last">–</div>
   </div>
-  <div class="tiles" style="margin-top:16px">
-    <div class="tile">
-      <div class="label">Job Success Rate</div>
-      <div class="value" id="success">–</div>
-      <div class="label" id="last">–</div>
-    </div>
-    <div class="tile">
-      <div class="label">Outstanding KSeF Queue</div>
-      <div class="value" id="outstanding">–</div>
-    </div>
+  <div class="tile">
+    <div class="label">Outstanding KSeF Queue</div>
+    <div class="value" id="outstanding" aria-live="polite">–</div>
   </div>
-  <script>
-    let sb
-    document.getElementById('connect').onclick = async () => {
-      const url = document.getElementById('url').value
-      const key = document.getElementById('key').value
-      sb = window.supabase.createClient(url, key)
-      const { data: rates } = await sb.from('view_job_success_rate').select('*').eq('job','ksef-batch').limit(1)
-      const r = rates && rates[0]
-      document.getElementById('success').textContent = r ? String(r.success_rate) : '0'
-      document.getElementById('last').textContent = r ? new Date(r.last_run).toLocaleString() : ''
-      const { data: q } = await sb.from('view_ksef_outstanding_queue').select('*').limit(1)
-      document.getElementById('outstanding').textContent = q && q[0] ? String(q[0].outstanding) : '0'
-    }
-  </script>
+</div>
+</main>
+<script>
+(function(){
+  let sb;
+  const connectBtn = document.getElementById('connect');
+  
+  connectBtn.addEventListener('click', async function(){
+    const url = document.getElementById('url').value;
+    const key = document.getElementById('key').value;
+    sb = window.supabase.createClient(url, key);
+    const { data: rates } = await sb.from('view_job_success_rate').select('*').eq('job','ksef-batch').limit(1);
+    const r = rates && rates[0];
+    document.getElementById('success').textContent = r ? String(r.success_rate) : '0';
+    document.getElementById('last').textContent = r ? new Date(r.last_run).toLocaleString() : '';
+    const { data: q } = await sb.from('view_ksef_outstanding_queue').select('*').limit(1);
+    document.getElementById('outstanding').textContent = q && q[0] ? String(q[0].outstanding) : '0';
+  });
+})();
+</script>
 </body>
 </html>

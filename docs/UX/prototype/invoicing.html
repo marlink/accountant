@@ -1,18 +1,17 @@
 <!doctype html>
 <html lang="pl">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prototype — Faktura</title>
-<style>
-body{margin:0;font-family:-apple-system,system-ui,Segoe UI}
-nav{background:#111;color:#fff;padding:10px 16px;display:flex;gap:12px;flex-wrap:wrap}
-nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;background:#333}
-.frame{width:100%;height:920px;border:0}
-</style>
+<link rel="stylesheet" href="styles.css">
+</head>
 <body>
-<nav>
+<a href="#main-content" class="skip-link">Przejdź do treści głównej</a>
+<header role="banner">
+<nav role="navigation" aria-label="Główne menu nawigacyjne">
   <a href="index.html">Dashboard</a>
-  <a href="invoicing.html">Faktura</a>
+  <a href="invoicing.html" aria-current="page">Faktura</a>
   <a href="invoice.html">Szczegóły FV</a>
   <a href="costs.html">Koszt/OCR</a>
   <a href="bank.html">Bank/AIS</a>
@@ -23,26 +22,30 @@ nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;backgro
   <a href="settings.html">Ustawienia</a>
   <a href="errors.html">Błędy</a>
 </nav>
-<div style="padding:12px;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:end">
-  <div>
-    <label>NIP</label>
-    <input id="nip" type="text" maxlength="10" placeholder="XXXXXXXXXX" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+</header>
+<main id="main-content" role="main">
+<h1 class="sr-only">Wystaw fakturę</h1>
+<form class="form-grid form-grid-compact" aria-label="Formularz faktury">
+  <div class="form-group">
+    <label for="nip">NIP</label>
+    <input id="nip" type="text" maxlength="10" placeholder="XXXXXXXXXX" aria-required="true" aria-describedby="nip-error">
+    <span id="nip-error" class="sr-only" role="alert"></span>
   </div>
-  <div>
-    <label>Numeracja</label>
-    <input id="numer" type="text" value="FV/2025/000123" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+  <div class="form-group">
+    <label for="numer">Numeracja</label>
+    <input id="numer" type="text" value="FV/2025/000123" aria-required="true">
   </div>
-  <div>
-    <label>MPP</label>
-    <input id="mpp" type="checkbox" style="transform:scale(1.2)">
+  <div class="form-group align-center">
+    <label for="mpp">MPP</label>
+    <input id="mpp" type="checkbox" class="checkbox-spaced" aria-label="MPP">
   </div>
-  <div>
-    <label>Cena netto</label>
-    <input id="netto" type="number" step="0.01" value="100" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+  <div class="form-group">
+    <label for="netto">Cena netto</label>
+    <input id="netto" type="number" step="0.01" value="100" aria-required="true">
   </div>
-  <div>
-    <label>VAT</label>
-    <select id="vat" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:6px">
+  <div class="form-group">
+    <label for="vat">VAT</label>
+    <select id="vat" aria-required="true">
       <option value="23">23%</option>
       <option value="8">8%</option>
       <option value="5">5%</option>
@@ -50,40 +53,76 @@ nav a{color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;backgro
       <option value="zw">zw</option>
     </select>
   </div>
-  <button id="ksef" style="padding:10px 14px;border:0;border-radius:8px;background:#4f46e5;color:#fff">Wyślij do KSeF</button>
+  <div class="form-group align-end">
+    <button id="ksef" type="submit" class="btn-primary full-width">Wyślij do KSeF</button>
+  </div>
+</form>
+<div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
+<div class="screen-toggle-container">
+  <label class="screen-toggle">
+    <input id="small" type="checkbox" aria-label="Przełącz na mały ekran (390px)"> <span>Mały ekran (390px)</span>
+  </label>
 </div>
-<div id="status" style="padding:8px 12px;color:#111"></div>
-<div style="padding:8px 16px"><label><input id="small" type="checkbox"> Mały ekran (390px)</label></div>
 <div id="wrap">
-  <object class="frame" type="image/svg+xml" data="../wireframes/invoicing_form.svg"></object>
+  <object class="frame" type="image/svg+xml" data="../wireframes/invoicing_form.svg" aria-label="Formularz faktury wireframe"></object>
 </div>
+</main>
 <script>
-const s=document.getElementById('status');
-const btn=document.getElementById('ksef');
-btn.onclick=()=>{
-  const nip=document.getElementById('nip').value.trim();
-  const numer=document.getElementById('numer').value.trim();
-  const vat=document.getElementById('vat').value;
-  const netto=parseFloat(document.getElementById('netto').value||'0');
-  const valid=/^\d{10}$/.test(nip);
-  if(!valid){s.textContent='Odrzucono: Nieprawidłowy NIP';s.style.color='#b91c1c';return}
-  const vatAmt=vat==='zw'?0:vat==='0'?0:netto*(parseFloat(vat)/100);
-  const brutto=(netto+vatAmt).toFixed(2);
-  const id='KSeF-'+Math.random().toString(36).slice(2,8).toUpperCase();
-  s.style.color='#065f46';
-  s.textContent='Przyjęto • '+numer+' • Brutto '+brutto+' • Id '+id;
-};
-// small screen toggle
 (function(){
-  const small=document.getElementById('small');
-  const wrap=document.getElementById('wrap');
-  const frame=document.querySelector('.frame');
-  const orig=frame.style.height||'920px';
-  function apply(){
-    if(small && small.checked){wrap.style.maxWidth='390px';frame.style.height='600px';}
-    else{wrap.style.maxWidth='none';frame.style.height=orig;}
+  const s = document.getElementById('status');
+  const form = document.querySelector('form');
+  const nipInput = document.getElementById('nip');
+  const nipError = document.getElementById('nip-error');
+  
+  function showStatus(message, type){
+    s.textContent = message;
+    s.className = type;
+    s.setAttribute('aria-live', 'assertive');
   }
-  if(small){small.onchange=apply;apply();}
+  
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const nip = nipInput.value.trim();
+    const numer = document.getElementById('numer').value.trim();
+    const vat = document.getElementById('vat').value;
+    const netto = parseFloat(document.getElementById('netto').value || '0');
+    const valid = /^\d{10}$/.test(nip);
+    
+    if(!valid){
+      nipInput.classList.add('error');
+      nipInput.setAttribute('aria-invalid', 'true');
+      nipError.textContent = 'Nieprawidłowy NIP';
+      showStatus('Odrzucono: Nieprawidłowy NIP', 'error');
+      return;
+    }
+    
+    nipInput.classList.remove('error');
+    nipInput.setAttribute('aria-invalid', 'false');
+    nipError.textContent = '';
+    const vatAmt = vat === 'zw' ? 0 : vat === '0' ? 0 : netto * (parseFloat(vat) / 100);
+    const brutto = (netto + vatAmt).toFixed(2);
+    const id = 'KSeF-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+    showStatus('Przyjęto • ' + numer + ' • Brutto ' + brutto + ' • Id ' + id, 'success');
+  });
+  
+  // small screen toggle
+  const small = document.getElementById('small');
+  const wrap = document.getElementById('wrap');
+  const frame = document.querySelector('.frame');
+  const orig = frame.style.height || '920px';
+  function apply(){
+    if(small && small.checked){
+      wrap.style.maxWidth = '390px';
+      frame.style.height = '600px';
+    } else {
+      wrap.style.maxWidth = 'none';
+      frame.style.height = orig;
+    }
+  }
+  if(small){
+    small.addEventListener('change', apply);
+    apply();
+  }
 })();
 </script>
 </body>

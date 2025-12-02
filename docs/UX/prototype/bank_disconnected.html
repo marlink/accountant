@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bank — brak połączenia</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.card{margin:var(--space-lg);border:2px dashed var(--warning);border-radius:var(--radius-xl);padding:var(--space-lg);background:#fffbeb}
+.card h2{margin:0 0 var(--space-md) 0;color:var(--text-primary)}
+.card p{margin:0 0 var(--space-lg) 0;color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Przejdź do treści głównej</a>
+<header role="banner">
+<nav role="navigation" aria-label="Główne menu nawigacyjne">
+  <a href="index.html">Dashboard</a>
+  <a href="invoicing.html">Faktura</a>
+  <a href="invoice.html">Szczegóły FV</a>
+  <a href="costs.html">Koszt/OCR</a>
+  <a href="bank.html">Bank/AIS</a>
+  <a href="vat.html">VAT/JPK</a>
+  <a href="invite.html">Współpracownik</a>
+  <a href="notifications.html">Powiadomienia</a>
+  <a href="reports.html">Raporty</a>
+  <a href="settings.html">Ustawienia</a>
+  <a href="errors.html">Błędy</a>
+</nav>
+</header>
+<main id="main-content" role="main">
+<h1 class="sr-only">Brak połączenia z bankiem</h1>
+<div class="card" role="alert">
+  <h2>Integracja bankowa rozłączona</h2>
+  <p>Nie udało się odświeżyć połączenia AIS. Wymagana ponowna autoryzacja.</p>
+  <button id="btn-reconnect" class="btn-primary">Połącz ponownie</button>
+</div>
+</main>
+<script>
+document.getElementById('btn-reconnect').addEventListener('click', function(){
+  location.href = 'bank.html';
+});
+</script>
+</body>
+</html>

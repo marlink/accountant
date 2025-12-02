@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>401 — Brak autoryzacji</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body{margin:0;font-family:var(--font-sans);display:flex;min-height:100vh;background:var(--color-p1);color:var(--text-on-primary)}
+.wrap{margin:auto;text-align:center;padding:var(--space-xl)}
+input{padding:var(--space-sm);border:1px solid var(--primary-light);border-radius:var(--radius-md);background:var(--primary-light);color:var(--text-on-primary);min-height:44px}
+input:focus{outline:none;border-color:var(--color-p2);box-shadow:0 0 0 3px rgba(59,130,246,0.1)}
+input:focus-visible{outline:3px solid var(--color-p2);outline-offset:2px}
+button{padding:var(--space-sm) var(--space-md);border:0;border-radius:var(--radius-md);background:var(--color-p2);color:var(--text-on-secondary);min-height:44px;cursor:pointer}
+button:hover{background:var(--secondary-dark)}
+button:focus-visible{outline:3px solid var(--color-p2);outline-offset:2px}
+.row{display:flex;gap:var(--space-sm);justify-content:center;margin-top:var(--space-md);flex-wrap:wrap}
+.hint{color:var(--text-secondary);margin-top:var(--space-md)}
+.wrap a{color:var(--color-p2);text-decoration:none;font-weight:500}
+.wrap a:hover{text-decoration:underline}
+.wrap a:focus-visible{outline:3px solid var(--color-p2);outline-offset:2px;border-radius:var(--radius-sm)}
+</style>
+</head>
+<body>
+<main role="main" id="main-content">
+<div class="wrap">
+  <h1>Brak autoryzacji</h1>
+  <p>Sesja wygasła lub nie jesteś zalogowany.</p>
+  <form aria-label="Formularz logowania">
+    <div class="row">
+      <label for="email" class="sr-only">E-mail</label>
+      <input id="email" type="email" placeholder="user@example.com" aria-required="true" aria-label="Adres e-mail">
+      <label for="pass" class="sr-only">Hasło</label>
+      <input id="pass" type="password" placeholder="••••••••" aria-required="true" aria-label="Hasło">
+      <button id="login" type="submit">Zaloguj</button>
+    </div>
+    <div id="status" class="hint" role="status" aria-live="polite" aria-atomic="true"></div>
+  </form>
+  <p class="spaced-top"><a href="index.html">Powrót do Dashboard</a></p>
+</div>
+</main>
+<script>
+(function(){
+  const form = document.querySelector('form');
+  const s = document.getElementById('status');
+  
+  function showStatus(message, type){
+    s.textContent = message;
+    s.className = type;
+    s.setAttribute('aria-live', 'assertive');
+  }
+  
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    const e = document.getElementById('email').value.trim();
+    const p = document.getElementById('pass').value.trim();
+    if(!e || !p){
+      showStatus('Podaj e‑mail i hasło', 'error');
+      return;
+    }
+    showStatus('Demo: zalogowano', 'success');
+  });
+})();
+</script>
+</body>
+</html>

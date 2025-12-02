@@ -2,3 +2,4 @@
 .obsidian/plugins/*/node_modules/
 .obsidian/plugins/*/dist/
 .obsidian/plugins/*/build/
+.obsidian/plugins/obsidian_ai_plugin/
