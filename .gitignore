@@ -4,5 +4,61 @@
 .obsidian/plugins/*/build/
 .obsidian/plugins/obsidian_ai_plugin/
 
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build artifacts
+*.tsbuildinfo
+.next/
+out/
+dist/
+build/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
 # Supabase CLI temp files
 supabase/.temp/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.pem
+*.key
+.cache/

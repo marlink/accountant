@@ -6,8 +6,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import https from 'https'
 import crypto from 'crypto'
-import { buildFaXml } from '../../../../../lib/ksef/fa'
-import { polishError } from '../../../../../lib/ksef/errors'
+import { buildFaXml } from '../../../../../../lib/ksef/fa'
+import { polishError } from '../../../../../../lib/ksef/errors'
 import { createServerSupabase } from '@/lib/supabase/client'
 import { withRateLimit } from '@/lib/api/rate-limit'
 

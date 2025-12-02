@@ -223,18 +223,12 @@ export function logError(error: AppError, additionalContext?: Record<string, unk
   }
 
   // Send to Sentry if available
-  if (process.env.SENTRY_DSN) {
-    try {
-      // Dynamic import to avoid bundling if not needed
-      const { captureException } = require('../apps/web/lib/errors/sentry');
-      if (captureException) {
-        const errorObj = new Error(error.message);
-        errorObj.name = error.code;
-        captureException(errorObj, logData);
-      }
-    } catch (e) {
-      // Sentry not available, continue without it
-    }
+  // Note: Sentry integration is handled in apps/web/lib/errors/sentry.ts
+  // This root-level handler doesn't have direct access to Sentry
+  if (process.env.SENTRY_DSN && typeof console !== 'undefined' && console.error) {
+    const errorObj = new Error(error.message);
+    errorObj.name = error.code;
+    console.error('Error (Sentry would capture):', errorObj, logData);
   }
 }
 

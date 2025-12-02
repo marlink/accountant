@@ -26,7 +26,7 @@ npm install
 ### Option A: Supabase Cloud (Recommended)
 
 1. **Create a Supabase project:**
-   - Go to https://supabase.com
+   - Go to <https://supabase.com>
    - Click "New Project"
    - Fill in project details
    - Wait for project to be created (~2 minutes)
@@ -41,17 +41,18 @@ npm install
    - Copy Connection String → `DATABASE_URL`
 
 3. **Apply migrations:**
-   ```bash
+
+```bash
    # Install Supabase CLI (if not already installed)
    npm install -g supabase
-   
+
    # Link your project
    supabase link --project-ref YOUR_PROJECT_REF
-   
-   # Apply migrations
-   supabase db push
-   ```
-   
+
+# Apply migrations
+supabase db push
+```
+
    Or manually:
    - Go to Supabase Dashboard → SQL Editor
    - Copy and run each file from `supabase/migrations/` in order (0001, 0002, etc.)
@@ -74,29 +75,32 @@ Use the connection details from `supabase status` output.
 ## Step 3: Configure Environment Variables
 
 1. **Create `.env.local` file:**
-   ```bash
-   cd apps/web
-   cp .env.example .env.local
-   ```
+
+```bash
+cd apps/web
+cp .env.example .env.local
+```
 
 2. **Fill in your values:**
-   ```env
+
+```env
    NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
    SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-   DATABASE_URL=postgresql://postgres:[password]@[host]:5432/postgres
-   ```
+DATABASE_URL=postgresql://postgres:[password]@[host]:5432/postgres
+```
 
 3. **Optional (for full features):**
-   ```env
+
+```env
    # KSeF (for e-invoicing)
    KSEF_CERT_PEM_B64=...
    KSEF_KEY_PEM_B64=...
    KSEF_API_URL=https://ksef-api.example.com
-   
+
    # Error tracking
-   SENTRY_DSN=your-sentry-dsn
-   ```
+SENTRY_DSN=your-sentry-dsn
+```
 
 ## Step 4: Start Development Server
 
@@ -144,22 +148,26 @@ curl http://localhost:3000/api/health
 ## Troubleshooting
 
 ### "Cannot find module '@supabase/supabase-js'"
+
 ```bash
 cd apps/web
 npm install
 ```
 
 ### "Missing Supabase environment variables"
+
 - Check `.env.local` exists
 - Verify all required variables are set
 - Restart development server
 
 ### "Database connection failed"
+
 - Verify Supabase project is active
 - Check `DATABASE_URL` is correct
 - Ensure IP allowlist allows your IP (if configured)
 
 ### "Migrations failed"
+
 - Run migrations in order (0001, 0002, etc.)
 - Check for existing tables (may need to drop first)
 - Review error messages in Supabase SQL editor
@@ -169,4 +177,3 @@ npm install
 - Check [Deployment Readiness Summary](DEPLOYMENT-READINESS-SUMMARY.md)
 - Review [Environment Setup Guide](ENVIRONMENT.md)
 - Consult [Deployment Guide](DEPLOYMENT.md)
-
