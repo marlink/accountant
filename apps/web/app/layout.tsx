@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import "./globals.css"
+import { StylisticSettingsProvider } from "@/components/layout/stylistic-settings-provider"
 
 export const metadata: Metadata = {
   title: "Accountant App",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body>{children}</body>
+      <body>
+        <StylisticSettingsProvider>{children}</StylisticSettingsProvider>
+      </body>
     </html>
   )
 }
