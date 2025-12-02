@@ -81,6 +81,17 @@
 
   * {
     @apply border-border;
+    /* Apply stylistic settings to border radius and stroke where appropriate */
+    border-radius: var(--stylistic-radius, 0.5rem);
+  }
+  
+  /* Apply stylistic stroke to borders */
+  button,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    border-width: var(--stylistic-stroke, 2px);
   }
 
   body {
