@@ -42,16 +42,16 @@ npm install
 
 3. **Apply migrations:**
 
-```bash
+   ```bash
    # Install Supabase CLI (if not already installed)
    npm install -g supabase
 
    # Link your project
    supabase link --project-ref YOUR_PROJECT_REF
 
-# Apply migrations
-supabase db push
-```
+   # Apply migrations
+   supabase db push
+   ```
 
    Or manually:
    - Go to Supabase Dashboard → SQL Editor
@@ -83,24 +83,24 @@ cp .env.example .env.local
 
 2. **Fill in your values:**
 
-```env
+   ```env
    NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
    SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-DATABASE_URL=postgresql://postgres:[password]@[host]:5432/postgres
-```
+   DATABASE_URL=postgresql://postgres:[password]@[host]:5432/postgres
+   ```
 
 3. **Optional (for full features):**
 
-```env
+   ```env
    # KSeF (for e-invoicing)
    KSEF_CERT_PEM_B64=...
    KSEF_KEY_PEM_B64=...
    KSEF_API_URL=https://ksef-api.example.com
 
    # Error tracking
-SENTRY_DSN=your-sentry-dsn
-```
+   SENTRY_DSN=your-sentry-dsn
+   ```
 
 ## Step 4: Start Development Server
 
@@ -109,7 +109,7 @@ cd apps/web
 npm run dev
 ```
 
-Open http://localhost:3000
+Open <http://localhost:3000>
 
 ## Step 5: Verify Setup
 
